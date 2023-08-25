@@ -8,6 +8,7 @@ const authenticationMiddleware = (req, res, next) => {
         res.status(401).json({ error: 'Unauthorized' })
     } else {
         const token = authHeader.split(' ')[1]
+        console.log = authHeader
 
         try { 
             const decodedToken = jwt.verify(token, JWT_SIGN)

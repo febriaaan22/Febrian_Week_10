@@ -16,8 +16,6 @@ const getAllTransfers = async (req, res) => {
 
 const createTransfers = async (req, res) => {
     const { amount, currency, sourceAccount, destinationAccount } = req.body
-
-    console.log(amount, currency, sourceAccount, destinationAccount);
     
     try{
         const newTransfer = await req.db.collection('transfers').insertOne({ 
@@ -40,7 +38,7 @@ const updateTransfers = async (req, res) => {
     const id = req.params.id
     const { status } = req.body
 
-    const newStatus = await req.db.collection('transfers').updateOne({ _id: new ObjectId(id) }, {$set:{status} })
+    const newStatus = await req.db.collection('transfers').updateOne({ _id: new ObjectId(id) }, { $set:{status:status} })
     
     res.status(200).json({
         message: 'updated',

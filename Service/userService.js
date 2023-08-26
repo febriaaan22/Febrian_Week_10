@@ -9,13 +9,19 @@ const register = async (req, res) => {
     try {
         const validRoles = ['maker', 'approver'];
         const usernameValue = username.trim(' ');
-
+        if (password.length < 8) {
+            return false;
+        }
+        const alphanumericRegex = /[0-9a-zA-Z]/;
+        if (!alphanumericRegex.test(password)) {
+            return false;
+        }
         if (usernameValue === '' || usernameValue == null) {
             res.status(400).json({
                 message: 'Username cant be blank'
             });
         }
-        if(!validRoles.includees(role)){
+        if(!validRoles.includes(role)){
             throw new Error('Invalid role');
         }
         const user = await req.db.collection('users').findOne({ username })

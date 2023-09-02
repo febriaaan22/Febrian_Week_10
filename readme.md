@@ -34,6 +34,10 @@ Each of this folder consist different of file with different purpose to make sur
 
 
 
+## DEPLOYMENT
+
+Here's a link below for deployment link:
+
 
 ## Contact Me
 This project is far from perfect and I need your feedback to improve this project <br>

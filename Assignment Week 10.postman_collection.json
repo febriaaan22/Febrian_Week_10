@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "20fbde9e-a3ae-4fad-a030-1fe159441445",
+		"name": "Assignment Week 10",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29043469",
+		"_collection_link": "https://universal-water-964665.postman.co/workspace/Deploy~04bb8a91-a77c-4a13-b8e8-f7cb6f6486df/collection/29043469-20fbde9e-a3ae-4fad-a030-1fe159441445?action=share&source=collection_link&creator=29043469"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"selenagomez\",\n    \"password\": \"SG26072023\",\n    \"role\": \"approver\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/user/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{API_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"taylorswift\",\n    \"password\": \"13121989\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Based_URL}}/user/login",
+							"host": [
+								"{{Based_URL}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transfer",
+			"item": [
+				{
+					"name": "getAllTransfer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRheWxvcnN3aWZ0IiwiaWQiOiI2NGU5NmU0NmRjOGViMTRiYzIwNDhkYjYiLCJyb2xlIjoiYXBwcm92ZXIiLCJpYXQiOjE2OTMwMjAxNzV9.Gn8QsN0rSgt67aSs4NBAaWYaz_SIBPFozQHcjZm2aF8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/transfer",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transfer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createTransfer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbGVuYWdvbWV6IiwiaWQiOiI2NGYxZjQwYzUxYTkwNjU1OWEyZTJlZjIiLCJyb2xlIjoiYXBwcm92ZXIiLCJpYXQiOjE2OTM1NzgyNzN9.s6LkBTAIATPy2puSN6XttNTwzFgjMi0iNHjAsqi4ezo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": \"50000000\",\n    \"currency\": \"Rp\",\n    \"sourceAccount\":\"64e96e46dc8eb14bc2048db6\",\n    \"destinationAccount\": \"64e841cdb70e2b9d478c6279\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/transfer",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transfer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Approval",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlbGVuYWdvbWV6IiwiaWQiOiI2NGYxZjQwYzUxYTkwNjU1OWEyZTJlZjIiLCJyb2xlIjoiYXBwcm92ZXIiLCJpYXQiOjE2OTM2MjgyMjB9.PAXyF_HGUenAV7dlQMYE3kCNUmDBqZfmZKcY7DDByWA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"Updated\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Update",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"updated\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Based_URL}}/transfer/64e96e46dc8eb14bc2048db6",
+					"host": [
+						"{{Based_URL}}"
+					],
+					"path": [
+						"transfer",
+						"64e96e46dc8eb14bc2048db6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

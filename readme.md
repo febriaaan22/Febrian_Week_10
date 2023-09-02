@@ -30,7 +30,7 @@ Each of this folder consist different of file with different purpose to make sur
    - User: All code for Register and Login
 5. App.js is contain the logic off the path and port.
 6. doc.yaml is a file for Swagger Documentation.
-
+7. Cyclic for Deployment
 
 
 

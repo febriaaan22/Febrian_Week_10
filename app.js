@@ -1,15 +1,27 @@
 require('dotenv').config()
 
 const express = require('express')
+// const cors = require('cors')
 const databaseMiddleware = require('./middleware/database-middleware.js')
 const transferRouter = require('./routes/transferRouter.js')
 const userRouter = require('./routes/userRouter.js')
 const authMiddleware = require('./middleware/authentication-middleware.js')
+const openApiValidator = require('express-openapi-validator')
+const swaggerUi = require('swagger-ui-express')
+const yaml = require('yaml')
+const bodyParser = require('body-parser')
+
 
 const app = express()
 
-app.use(express.json())
+// app.use(cors())
+app.use(bodyParser.json())
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(yaml.parse(require('fs').readFileSync('./docs/doc.yaml', 'utf8'))))
+app.use(openApiValidator.middleware({
+    apiSpec: './docs/doc.yaml'
+}))
 app.use(databaseMiddleware)
+
 
 app.get('/', (req, res) => {
     res.send('Assignment Week 10')
